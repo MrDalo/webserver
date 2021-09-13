@@ -1,7 +1,7 @@
 #!/bin/sh
 
-USER_NAME="example"
-USER_WEB="example"
+USER_NAME="skuska"
+USER_WEB="skuskaWeb"
 
 
 echo "$USER_NAME"
@@ -19,6 +19,6 @@ mkdir -p /var/www/wedevs.sk/public_html/"$USER_WEB"
 """Creating symlink to folder /var/www/"""
 ln -s /var/www/wedevs.sk/public_html/"$USER_WEB" /home/"$USER_NAME"/www
 
-
-
-
+"""Adding chmod to new create folder in /var/www/wedevs.sk/public_html"""
+sudo chgrp -R "$USER_NAME" /var/www/wedevs.sk/public_html/"$USER_WEB"
+sudo chmod -R g=rwX /var/www/wedevs.sk/public_html/"$USER_WEB"
