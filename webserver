@@ -1,24 +1,24 @@
 #!/bin/sh
 
-USER_NAME="skuska"
-USER_WEB="skuskaWeb"
+USER_NAME="example"
+USER_WEB="exampleWeb"
 
 
 echo "$USER_NAME"
 
-"""Adding USER to groups """
+#Adding USER to groups
 sudo adduser "$USER_NAME" web
 sudo adduser "$USER_NAME" www-data
 
 
-"""Creating folders for web"""
+#Creating folders for web
 mkdir -p /home/"$USER_NAME"/www
 mkdir -p /var/www/wedevs.sk/public_html/"$USER_WEB"
 
 
-"""Creating symlink to folder /var/www/"""
+#Creating symlink to folder /var/www/#
 ln -s /var/www/wedevs.sk/public_html/"$USER_WEB" /home/"$USER_NAME"/www
 
-"""Adding chmod to new create folder in /var/www/wedevs.sk/public_html"""
+#Adding chmod to new create folder in /var/www/wedevs.sk/public_html
 sudo chgrp -R "$USER_NAME" /var/www/wedevs.sk/public_html/"$USER_WEB"
 sudo chmod -R g=rwX /var/www/wedevs.sk/public_html/"$USER_WEB"
